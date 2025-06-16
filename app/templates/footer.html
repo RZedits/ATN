@@ -416,7 +416,7 @@
 
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
-                    <form method="post" action="#">
+                    <form method="post" action="{{url_for('home')}}">
                         <div class="form-group">
                             <div class="form-row">
                                 <div>
@@ -424,15 +424,15 @@
                                     <input type="text" name="name" id="name" class="form-input" placeholder="Your full name" required>
                                 </div>
                                 <div>
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" name="email" id="email" class="form-input" placeholder="your@email.com" required>
+                                    <label for="email" class="form-label">Phone Number</label>
+                                    <input type="email" name="email" id="email" class="form-input" placeholder="Your phone no." required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="message" class="form-label">Message</label>
-                            <textarea name="message" id="message" class="form-textarea" placeholder="Tell me about your project, ideas, or just say hello..." rows="5" required></textarea>
+                            <textarea name="message" id="message" class="form-textarea" placeholder="" rows="5" required></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn">
