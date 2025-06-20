@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>||</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Inter+Tight:wght@400;500&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!--    # internal css because of jinja templating to load image-->
+    <style>
+        .bullshero {
+  position: relative;
+  height: auto;
+
+  color: white;
+  overflow: hidden;
+  z-index: 0;
+}
+        .bullshero::before {
+          content: "";
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                      url('{{ url_for("static", filename="images/bulls_hero.jpg") }}');
+          background-size: cover;
+          background-position: center;
+          z-index: -1; /* correctly behind the content, but now includes the image + overlay */
+        }
+        .hero-text{
+    color: white;
+    font-size: 3rem;
+}
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/bulls.png') }}"
+                     alt="..."
+                     style="width: 70px; height: 70px;"
+                     class="me-2">
+
+                Bulls Bible School
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Bulls Bible School</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Podcasts and Videos</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Healing Streams</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section class="bullshero container rounded-4 py-6 px-2  "
+         style="background-image: url('{{ url_for('static', filename='images/bulls_hero.jpg') }}');">
+    <div class="hero-subtext container my-4">
+        <h1 class="hero-text">Welcome to Bulls Bible School</h1>
+        <p>Bulls Bible School exists to create an opportunity for in-depth theological training for people in ministry.
+            We aim at establishing students in their most holy faith, not just intellectually but with a keen focus on
+            the spirit aspect of our faith, with the intent of equipping them in the supernatural as well.</p>
+    </div>
+
+    <!-- Why Study With Us Section -->
+
+    <div class="why-choose-section">
+        <div class="container mb-1">
+            <h2 class="text-center text-md-start">Why study with us?</h2>
+            <hr class="ruler">
+
+            <div class="row g-3 py-2 row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-center align-items-stretch">
+                <div class="col">
+                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <img src="{{url_for('static', filename = 'images/book.svg')}}"
+                                 style="width: 60px; height: 60px;"
+                                 alt="Competency-Based Learning Icon">
+                        </div>
+                        <h3 class="fs-5 mb-2">Competency-Based Learning</h3>
+                        <p class="flex-grow-1 mb-0">Our curriculum nurtures creativity, critical thinking, and
+                            real-world skills for lifelong spiritual success.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <img src="{{url_for('static', filename = 'images/school.svg')}}"
+                                 style="width: 60px; height: 60px;"
+                                 alt="Boarding Experience Icon">
+                        </div>
+                        <h3 class="fs-5 mb-2">Exceptional Training Experience</h3>
+                        <p class="flex-grow-1 mb-0">Our comprehensive facilities provide a safe, comfortable, and
+                            nurturing environment where students thrive spiritually.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <img src="{{url_for('static', filename = 'images/bible.svg')}}"
+                                 style="width: 60px; height: 60px;"
+                                 alt="Christianity-Based Foundation Icon">
+                        </div>
+                        <h3 class="fs-5 mb-2">Christianity-Based Foundation</h3>
+                        <p class="flex-grow-1 mb-0">We instill strong biblical values to shape responsible, disciplined,
+                            and morally upright ministry leaders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Our team-->
+<section class="container my-5">
+    <h2 class="primary-heading-color text-center text-md-start"> Meet our instructors</h2>
+    <hr>
+    <hr class="ruler">
+    <div class="row g-3  row-cols-1  row-cols-lg-3  align-items-stretch  ">
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
+                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-2">
+                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                         class="img-fluid rounded-3 mb-3"
+                         alt="Lead Instructor"
+                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
+                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
+                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
+                    <a href="#" class="hero-btn mt-auto">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
+                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-4">
+                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                         class="img-fluid rounded-3 mb-3"
+                         alt="Lead Instructor"
+                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
+                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
+                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
+                    <a href="#" class="hero-btn mt-auto">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
+                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-4">
+                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                         class="img-fluid rounded-3 mb-3"
+                         alt="Lead Instructor"
+                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
+                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
+                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
+                    <a href="#" class="hero-btn mt-auto">View Profile</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!--blogpost-->
+<section class="container my-5">
+    <h2 class="primary-heading-color text-center text-md-start"> Blog posts and cirriculm notes</h2>
+    <hr class="ruler">
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="video-container">
+                            <iframe
+                                    src="https://www.youtube.com/embed/d7swcE__USA"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowfullscreen
+                            >
+                            </iframe>
+                        </div>
+                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
+                            power of the kingdom of God.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="video-container">
+                            <iframe
+                                    src="https://www.youtube.com/embed/d7swcE__USA"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowfullscreen
+                            >
+                            </iframe>
+                        </div>
+                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
+                            power of the kingdom of God.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="video-container">
+                            <iframe
+                                    src="https://www.youtube.com/embed/d7swcE__USA"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowfullscreen
+                            >
+                            </iframe>
+                        </div>
+                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
+                            power of the kingdom of God.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<script>
+    // Simple fade-in animation for elements when they come into view
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Apply fade-in to cards when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.instructor-card, .blog-card, .feature');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+
+    // Smooth scroll for mobile navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+<!-- Minimal JavaScript for enhanced mobile experience -->
+
+
