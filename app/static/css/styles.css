@@ -401,4 +401,68 @@
   width: 100%;
   height: 100%;
 }
+/* Why choose us styling */
+        .why-choose-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 2rem 1rem 0;
+            padding: 2rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+
+        }
+
+        .why-choose-section h2 {
+            color: white;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .ruler {
+            border: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            margin: 1rem 0 2rem;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        /* Enhanced styling for the hero section */
+        .hero-subtext {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: centre;
+            padding: 2rem 1rem;
+        }
+
+        .hero-text {
+            color: white;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .hero-subtext p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            line-height: 1.6;
+            color: rgba(255,255,255,0.95);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
 
