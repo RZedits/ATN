@@ -30,6 +30,4 @@ def bulls():
 def podcasts():
     return render_template("podcast.html")
 
-@main.route("/base")
-def base():
-    return render_template("podcast.html")
+
