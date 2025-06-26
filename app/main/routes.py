@@ -30,4 +30,8 @@ def bulls():
 def podcasts():
     return render_template("podcast.html")
 
+@main.route("/kingdom_videos")
+def kingdom_videos():
+    return render_template("kingdom_videos.html")
+
 

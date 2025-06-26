@@ -12,72 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Inter+Tight:wght@400;500&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-
-        .sidebar {
-            width: 260px;
-            height: 100vh;
-             background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin: 2rem 1rem 0;
-            padding: 2rem 1rem;
-            border: 1px solid rgba(255,255,255,0.2);
-
-            padding: 20px;
-            color: #ffffff;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 100px
-        }
-
-        .sidebar h4 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .sidebar hr {
-            border-top: 1px solid #6c757d;
-        }
-        .side{
-            padding-top: 100px
-        }
-
-        .content {
-            margin-left: 260px;
-            padding: 30px;
-            width: calc(100% - 260px);
-            min-height: 100vh;
-            overflow-y: auto;
-
-        }
-
-        /* Optional: Prevent horizontal scroll */
-        .container-fluid {
-            overflow-x: hidden;
-        }
-        .nav-pills .nav-link {
-            color: #adb5bd;
-            font-weight: 500;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-            border-radius: 6px;
-            padding: 10px 15px;
-        }
-
-        .nav-pills .nav-link:hover {
-            background-color: #2f3e51;
-            color: #ffffff;
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: #4c6ef5;
-            color: #fff;
-        }
-
-    </style>
 </head>
 <header>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -109,55 +43,53 @@
 
 <section class="container-fluid side">
     <!-- Sidebar -->
-    <div class="sidebar">
-        <h4> Sermons </h4>
-        <hr>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Students Database</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Suppliers Database</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Exams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Term Dates</a>
-            </li>
+    <div class="row">
+        {% block sidebar %}
+        <div class="col-lg-3 col-sm-12 mb-3 mt-2" id="sidebarMenu">
+            <div class="sidebar">
+                <h4 class="sidebar-heading"> Sermons </h4>
+                <hr>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.kingdom_videos') }}">Kingdom Power(2)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.kingdom_videos') }}">Holy Spirit(4)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.bulls') }}">Walking with God(3)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.bulls') }}">Others(3)</a>
+                    </li>
+                </ul>
 
-        </ul>
-
-        <h4> Podcasts </h4>
-        <hr>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Students Database</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Suppliers Database</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Exams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.bulls') }}">Term Dates</a>
-            </li>
-
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <div class="content">
-        {% block content %}
-        <h1> Testing</h1>
+                <h4 class="sidebar-heading"> Podcasts </h4>
+                <hr>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.bulls') }}">Interviews(5)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.bulls') }}">Personal Sermons(5)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.bulls') }}">Moments of worship(3)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         {% endblock %}
+
+        <!-- Main Content -->
+        <div class="col-lg-9 col-sm-12">
+            <div class="content  px-1">
+
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
     </div>
 </section>
 </body>
