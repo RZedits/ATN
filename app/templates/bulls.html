@@ -48,8 +48,7 @@
                      alt="..."
                      style="width: 70px; height: 70px;"
                      class="me-2">
-
-                Bulls Bible School
+                <p class="d-none d-sm-block">Bulls Bible School</p>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,10 +56,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Bulls Bible School</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Podcasts and Videos</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Healing Streams</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.bulls')}}">Bulls Bible School</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.podcasts')}}">Podcasts and Videos</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.anointing_streams')}}">Anointing Streams</a></li>
                 </ul>
             </div>
         </div>
@@ -69,7 +68,7 @@
 <section class="bullshero container rounded-4 py-6 px-2  "
          style="background-image: url('{{ url_for('static', filename='images/bulls_hero.jpg') }}');">
     <div class="hero-subtext container my-4">
-        <h1 class="hero-text">Welcome to Bulls Bible School</h1>
+        <h1 class="hero-text"> Bulls Bible School</h1>
         <p>Bulls Bible School exists to create an opportunity for in-depth theological training for people in ministry.
             We aim at establishing students in their most holy faith, not just intellectually but with a keen focus on
             the spirit aspect of our faith, with the intent of equipping them in the supernatural as well.</p>
@@ -86,7 +85,7 @@
                 <div class="col">
                     <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
                         <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="{{url_for('static', filename = 'images/book.svg')}}"
+                            <img src="{{url_for('static', filename = 'images/graduation-cap.svg')}}"
                                  style="width: 60px; height: 60px;"
                                  alt="Competency-Based Learning Icon">
                         </div>
@@ -99,7 +98,7 @@
                 <div class="col">
                     <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
                         <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="{{url_for('static', filename = 'images/school.svg')}}"
+                            <img src="{{url_for('static', filename = 'images/training.svg')}}"
                                  style="width: 60px; height: 60px;"
                                  alt="Boarding Experience Icon">
                         </div>

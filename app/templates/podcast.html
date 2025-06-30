@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
-{% block sidebar %}
-{% endblock %}
 {% block content %}
 
 <!--sermons and podcasts section-->
-<section class="container my-1 pt-1">
+<section class="container my-0">
     <div class=" latest"></div>
-    <h1 class="pb-2 pt-1"> Kingdom Power</h1>
+    <h1> Latest from sermons and podcast</h1>
     <hr>
     <div class="album py-1 bg-body-tertiary">
         <div class="container">
-
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card shadow-sm">
@@ -21,7 +18,7 @@
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                                     allowfullscreen
-                            >
+                                    >
                             </iframe>
                         </div>
                         <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
@@ -83,10 +80,6 @@
             </div>
         </div>
     </div>
-    <div class=" container px-5 cta-container pt-2">
-        <a href="{{ url_for('main.podcasts') }}" class="cta-btn cta-primary">
-            <i class="fas fa-arrow-left me-4"></i> Back
-        </a>
-    </div>
+
 </section>
 {% endblock %}

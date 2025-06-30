@@ -30,8 +30,12 @@ def bulls():
 def podcasts():
     return render_template("podcast.html")
 
+"""Routes for the diffrent categories of videos"""
 @main.route("/kingdom_videos")
 def kingdom_videos():
     return render_template("kingdom_videos.html")
 
-
+""" Healing streams route"""
+@main.route("/anointing_streams")
+def anointing_streams():
+    return render_template("anointing_streams.html")

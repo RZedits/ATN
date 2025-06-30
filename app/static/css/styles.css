@@ -528,3 +528,288 @@
             color: black;
         }
 
+/* timer container styling */
+.timer-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-title {
+
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+}
+        }
+
+        .event-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .countdown-container {
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            transition: all 0.5s ease-out;
+        }
+
+        .countdown-container.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 0.5rem;
+            border-radius: 15px;
+            min-width: 70px;
+            flex: 1;
+            max-width: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+        }
+
+        .time-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .server-time {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        .event-live {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+            display: none;
+        }
+
+        .event-live.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ff4757;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-button {
+            background: rgba(275, 25, 255, 0.2);
+            color: black;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 2rem;
+            }
+
+            .countdown {
+                gap: 0.5rem;
+            }
+
+            .time-unit {
+                min-width: 60px;
+                padding: 0.8rem 0.3rem;
+            }
+
+            .time-number {
+                font-size: 1.8rem;
+            }
+
+            .time-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .time-unit {
+                min-width: 50px;
+                padding: 0.6rem 0.2rem;
+            }
+
+            .time-number {
+                font-size: 1.5rem;
+            }
+
+            .time-label {
+                font-size: 0.6rem;
+            }
+        }
+        .timer-body{
+             body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        }
+.timertext-container {
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #667eea;
+    position: relative;
+    overflow: hidden;
+}
+.timervideo-container {
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #667eea;
+    position: relative;
+    overflow: hidden;
+}
+
+.timertext-container::before {
+    content: '✨';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.timertext-container h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.timervideo-container h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timertext-container p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #444;
+    text-align: left;
+    font-weight: 400;
+    margin: 0;
+}
