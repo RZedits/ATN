@@ -1,6 +1,7 @@
-from flask import render_template
+from flask import render_template, abort
 from . import main
 import smtplib
+import requests
 
 
 @main.route("/", methods= ["GET", "POST"])
@@ -25,6 +26,21 @@ def home():
 @main.route("/bulls")
 def bulls():
     return render_template("bulls.html")
+
+@main.route("/articles/<int:post_id>")
+def articles(post_id):
+    new_id = post_id - 1
+    posts = requests.get("https://api.npoint.io/2e85288c3d7b98781faa").json()
+    articles = posts["articles"]
+    for post in articles:
+        if post.get("post_id") ==  str(post_id):
+            selected_post = articles[new_id]
+            print(selected_post)
+
+        if not selected_post:
+          abort(404)  # Return 404 page if not found
+
+    return render_template("articles.html", post=selected_post)
 
 @main.route("/podcasts")
 def podcasts():

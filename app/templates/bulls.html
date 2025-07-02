@@ -57,9 +57,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.home')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.bulls')}}">Bulls Bible School</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.podcasts')}}">Podcasts and Videos</a></li>
-                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.anointing_streams')}}">Anointing Streams</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.bulls')}}">Bulls Bible
+                        School</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.podcasts')}}">Podcasts and
+                        Videos</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.anointing_streams')}}">Anointing
+                        Streams</a></li>
                 </ul>
             </div>
         </div>
@@ -186,16 +189,31 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card shadow-sm">
                         <div class="video-container">
-                            <iframe
-                                    src="https://www.youtube.com/embed/d7swcE__USA"
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                    allowfullscreen
-                            >
-                            </iframe>
+                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                                 class="img-fluid rounded-3 mb-3"
+                                 alt="Lead Instructor"
+                                 >
                         </div>
                         <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
+                            power of the kingdom of God.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" href="{{url_for('main.articles', post_id=1)}}"> Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="video-container">
+                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                                 class="img-fluid rounded-3 mb-3"
+                                 alt="Lead Instructor"
+                                 >
+                        </div>
+                        <div class="card-body"><p class="card-text">Kingdom power part 2. Discover the extra-ordinary
                             power of the kingdom of God.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
@@ -209,39 +227,12 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card shadow-sm">
                         <div class="video-container">
-                            <iframe
-                                    src="https://www.youtube.com/embed/d7swcE__USA"
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                    allowfullscreen
-                            >
-                            </iframe>
+                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
+                                 class="img-fluid rounded-3 mb-3"
+                                 alt="Lead Instructor"
+                                 >
                         </div>
-                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
-                            power of the kingdom of God.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="video-container">
-                            <iframe
-                                    src="https://www.youtube.com/embed/d7swcE__USA"
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                    allowfullscreen
-                            >
-                            </iframe>
-                        </div>
-                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
+                        <div class="card-body"><p class="card-text">Kingdom power part 3. Discover the extra-ordinary
                             power of the kingdom of God.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
