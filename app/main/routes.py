@@ -1,46 +1,47 @@
 from flask import render_template, abort
 from . import main
-import smtplib
-import requests
+from app.models import Articles
+from app import db
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField,DateField, SubmitField
+from wtforms.validators import DataRequired
+from flask_ckeditor import CKEditorField
+
+# WTForm for new article
+class Article(FlaskForm):
+    author = StringField("Author's name", validators=[DataRequired()])
+    title = StringField("Post title", validators=[DataRequired()])
+    post_photo = StringField("Photo url", validators=[DataRequired()])
+    author_url = StringField("Author url", validators=[DataRequired()])
+    body = CKEditorField("Blog Content", validators=[DataRequired()])
+    day = DateField("Date", validators=[DataRequired()])
+    submit = SubmitField("Submit")
 
 
 @main.route("/", methods= ["GET", "POST"])
 def home():
-    # """Sending the articles via email"""
-    # my_email = "sayomilembo@gmail.com"
-    # my_password = "your_password"
-    # message_body = "email message"
-    #
-    # with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-    #     connection.starttls()
-    #     connection.login(user=my_email,
-    #                      password=my_password)
-    #     connection.sendmail(
-    #         from_addr=my_email,
-    #         to_addrs="rzedits@yahoo.com",
-    #         msg=f"Subject: Here are top news from Unherd \n\n {
-    #         message_body}"
-    #     )
     return render_template("index.html")
 
 @main.route("/bulls")
 def bulls():
     return render_template("bulls.html")
 
-@main.route("/articles/<int:post_id>")
-def articles(post_id):
-    new_id = post_id - 1
-    posts = requests.get("https://api.npoint.io/2e85288c3d7b98781faa").json()
-    articles = posts["articles"]
-    for post in articles:
-        if post.get("post_id") ==  str(post_id):
-            selected_post = articles[new_id]
-            print(selected_post)
-
-        if not selected_post:
-          abort(404)  # Return 404 page if not found
-
-    return render_template("articles.html", post=selected_post)
+@main.route("/create_article", methods = ["GET", "POST"])
+def create_article():
+    form = Article()
+    if form.validate_on_submit():
+        new_article = Articles(
+            author=form.author.data,
+            title = form.title.data,
+            post_photo= form.post_photo.data,
+            author_url = form.author_url.data,
+            day= form.day.data,
+            body = form.body.data
+        )
+        db.session.add(new_article)
+        db.session.commit()
+        return "sucess"
+    return render_template("create_article.html", form= form)
 
 @main.route("/podcasts")
 def podcasts():

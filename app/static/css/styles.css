@@ -10,10 +10,11 @@
             --text-primary: #44342E;
             --text-secondary: #5F5B53;
             --shadow: rgba(0, 0, 0, 0.1);
+            --main-font: 'Cochin', 'Cormorant Garamond', serif;
         }
 
         body {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: var(--main-font);
             background-color: var(--background);
             color: var(--text-primary);
             min-height: 100vh;
@@ -21,8 +22,11 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--main-font);
             color: var(--text-primary);
+        }
+        p, h4, h5, h6, a, span, li, input, textarea, button {
+            font-family: var(--main-font);
         }
 
         .navbar {
@@ -134,7 +138,6 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
-            padding: 3rem;
             max-width: 1200px;
             width: 100%;
             position: relative;
@@ -173,13 +176,13 @@
         .hero-title {
             font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #0529bb 100%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 3s ease-in-out infinite alternate;
-            margin-bottom: 1.5rem;
+
             line-height: 1.1;
         }
 
@@ -192,13 +195,12 @@
             font-size: 1.25rem;
             color: black;
             font-weight: bold;
-            margin-bottom: 2rem;
             line-height: 1.6;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         .hero-description {
-            font-size: 1rem;
+            font-size: 1.5 rem;
             color: black;
             line-height: 1.7;
             margin-bottom: 2.5rem;
@@ -239,7 +241,7 @@
         }
 
         .cta-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #0529bb, #f67f30);
             color: white;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
@@ -322,7 +324,7 @@
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             .hero-card {
-                padding: 2rem 1.5rem;
+
                 margin: 1rem;
                 border-radius: 20px;
             }
@@ -332,11 +334,11 @@
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.35rem;
             }
 
             .hero-description {
-                font-size: 0.95rem;
+                font-size: 1.20rem;
                 color: black !important;
             }
 
