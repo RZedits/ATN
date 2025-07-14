@@ -1,4 +1,4 @@
-from flask import render_template, abort
+from flask import render_template, abort, request, redirect, url_for
 from . import main
 from app.models import Articles
 from app import db
@@ -11,6 +11,7 @@ from flask_ckeditor import CKEditorField
 class Article(FlaskForm):
     author = StringField("Author's name", validators=[DataRequired()])
     title = StringField("Post title", validators=[DataRequired()])
+    sub_title= StringField("Post sub-title", validators=[DataRequired()])
     post_photo = StringField("Photo url", validators=[DataRequired()])
     author_url = StringField("Author url", validators=[DataRequired()])
     body = CKEditorField("Blog Content", validators=[DataRequired()])
@@ -33,6 +34,7 @@ def create_article():
         new_article = Articles(
             author=form.author.data,
             title = form.title.data,
+            sub_title= form.sub_title.data,
             post_photo= form.post_photo.data,
             author_url = form.author_url.data,
             day= form.day.data,
@@ -40,8 +42,27 @@ def create_article():
         )
         db.session.add(new_article)
         db.session.commit()
-        return "sucess"
+        return redirect(url_for("main.all_articles"))
     return render_template("create_article.html", form= form)
+
+@main.route("/all_articles")
+def all_articles():
+    page = request.args.get('page', 1, type=int)
+    per_page = 5
+    offset = (page - 1) * per_page
+
+    articles = Articles.query.order_by(Articles.day.desc()).offset(offset).limit(per_page).all()
+    sorted_articles= [article.to_dict() for article in articles ]
+
+    has_more = Articles.query.count() > offset + per_page
+
+    return render_template("all_articles.html",articles=sorted_articles, page= page, has_more= has_more)
+
+@main.route("/article/<int:article_id>")
+def article(article_id):
+    post= db.session.execute(db.select(Articles).where(Articles.id == article_id )).scalar()
+    selected_post= post.to_dict()
+    return render_template("article.html", post = selected_post)
 
 @main.route("/podcasts")
 def podcasts():

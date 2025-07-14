@@ -17,25 +17,9 @@
         .bullshero {
   position: relative;
   height: auto;
-
   color: white;
   overflow: hidden;
-  z-index: 0;
-}
-        .bullshero::before {
-          content: "";
-          position: absolute;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-          background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-                      url('{{ url_for("static", filename="images/bulls_hero.jpg") }}');
-          background-size: cover;
-          background-position: center;
-          z-index: -1; /* correctly behind the content, but now includes the image + overlay */
-        }
-        .hero-text{
-    color: white;
-    font-size: 3rem;
+
 }
     </style>
 </head>
@@ -50,7 +34,7 @@
                      class="me-2">
                 <p class="d-none d-sm-block">Bulls Bible School</p>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            <button class="navbar-toggler pulse-border" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,16 +47,18 @@
                         Videos</a></li>
                     <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.anointing_streams')}}">Anointing
                         Streams</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 py-2" href="{{url_for('main.all_articles')}}">Articles</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
-<section class="bullshero container rounded-4 py-6 px-2  "
-         style="background-image: url('{{ url_for('static', filename='images/bulls_hero.jpg') }}');">
-    <div class="hero-subtext container my-4">
-        <h1 class="hero-text"> Bulls Bible School</h1>
-        <p>Bulls Bible School exists to create an opportunity for in-depth theological training for people in ministry.
+<section class="bullshero container rounded-4 py-6 px-2">
+    <div class="  container my-4 mx-2">
+        <h1 class="hero-title"> Bulls Bible School</h1>
+        <hr class="ruler">
+        <p class="container hero-description">Bulls Bible School exists to create an opportunity for in-depth
+            theological training for people in ministry.
             We aim at establishing students in their most holy faith, not just intellectually but with a keen focus on
             the spirit aspect of our faith, with the intent of equipping them in the supernatural as well.</p>
     </div>
@@ -86,41 +72,20 @@
 
             <div class="row g-3 py-2 row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-center align-items-stretch">
                 <div class="col">
-                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
+                    <div class="feature h-100 d-flex flex-column align-items-center text-left p-3">
                         <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
                             <img src="{{url_for('static', filename = 'images/graduation-cap.svg')}}"
                                  style="width: 60px; height: 60px;"
                                  alt="Competency-Based Learning Icon">
                         </div>
-                        <h3 class="fs-5 mb-2">Competency-Based Learning</h3>
-                        <p class="flex-grow-1 mb-0">Our curriculum nurtures creativity, critical thinking, and
-                            real-world skills for lifelong spiritual success.</p>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="{{url_for('static', filename = 'images/training.svg')}}"
-                                 style="width: 60px; height: 60px;"
-                                 alt="Boarding Experience Icon">
-                        </div>
-                        <h3 class="fs-5 mb-2">Exceptional Training Experience</h3>
-                        <p class="flex-grow-1 mb-0">Our comprehensive facilities provide a safe, comfortable, and
-                            nurturing environment where students thrive spiritually.</p>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="feature h-100 d-flex flex-column align-items-center text-center p-3">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="{{url_for('static', filename = 'images/bible.svg')}}"
-                                 style="width: 60px; height: 60px;"
-                                 alt="Christianity-Based Foundation Icon">
-                        </div>
-                        <h3 class="fs-5 mb-2">Christianity-Based Foundation</h3>
-                        <p class="flex-grow-1 mb-0">We instill strong biblical values to shape responsible, disciplined,
-                            and morally upright ministry leaders.</p>
+                        <p class="flex-grow-1 mb-0 hero-description">Students come to Bull’s Bible School not to “stay”
+                            in their faith but to GROW in faith and to become the Spirit-empowered leaders they are called to be. </p>
+                        <p class="flex-grow-1 mb-0 hero-description">At Bull’s
+                            Bible School, we aim at equipping students intellectually as we couple it with the
+                            supernatural.
+                            We produce balanced and holistic ministers of the gospel.
+                            Our training gives the learner the tools required to explore the depth of the Sacred
+                            Scriptures.</p>
                     </div>
                 </div>
             </div>
@@ -129,115 +94,85 @@
 </section>
 
 
-<!--Our team-->
-<section class="container my-5">
-    <h2 class="primary-heading-color text-center text-md-start"> Meet our instructors</h2>
-    <hr>
-    <hr class="ruler">
-    <div class="row g-3  row-cols-1  row-cols-lg-3  align-items-stretch  ">
-
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
-                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-2">
-                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                         class="img-fluid rounded-3 mb-3"
-                         alt="Lead Instructor"
-                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
-                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
-                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
-                    <a href="#" class="hero-btn mt-auto">View Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
-                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-4">
-                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                         class="img-fluid rounded-3 mb-3"
-                         alt="Lead Instructor"
-                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
-                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
-                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
-                    <a href="#" class="hero-btn mt-auto">View Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="stages h-100 d-flex flex-column align-items-center text-center p-3">
-                <div class="instructor-card h-100 d-flex flex-column align-items-center text-center p-4">
-                    <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                         class="img-fluid rounded-3 mb-3"
-                         alt="Lead Instructor"
-                         style="width: 100%; max-width: 280px; height: 280px; object-fit: cover;">
-                    <h2 class="h4 mb-2">Dr. John Kimani</h2>
-                    <p class="mb-3 text-muted">Lead Theology Instructor<br>20+ years experience</p>
-                    <a href="#" class="hero-btn mt-auto">View Profile</a>
-                </div>
-            </div>
+<section class="container  ">
+    <div class="contact-section-bulls rounded-3">
+        <div class="floating-particles">
+            <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; width: 5px; height: 5px; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; width: 6px; height: 6px; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; width: 3px; height: 3px; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 4.5s;"></div>
+            <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 1.5s;"></div>
         </div>
 
-    </div>
-</section>
-
-<!--blogpost-->
-<section class="container my-5">
-    <h2 class="primary-heading-color text-center text-md-start"> Blog posts and cirriculm notes</h2>
-    <hr class="ruler">
-    <div class="album py-5 bg-body-tertiary">
         <div class="container">
-            <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-3">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="video-container">
-                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                                 class="img-fluid rounded-3 mb-3"
-                                 alt="Lead Instructor"
-                                 >
-                        </div>
-                        <div class="card-body"><p class="card-text">Kingdom power part 1. Discover the extra-ordinary
-                            power of the kingdom of God.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-sm btn-outline-secondary" href="{{url_for('main.articles', post_id=1)}}"> Read more</a>
-                                </div>
+            <div class="section-header">
+                <h2 class="section-title">Join us</h2>
+                <p class="section-subtitle-bulls">
+                    Reach out through our phone number, email,and social channels listed below. Discover how we can be
+                    part of your spiritual journey
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-wrapper">
+                    <div class="contact-info">
+
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-phone"></i>
+                                Phone number
+                            </h3>
+                            <div class="info-content">
+                                <a href="mailto:sayomilembo@gmail.com">070-237-4140</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="video-container">
-                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                                 class="img-fluid rounded-3 mb-3"
-                                 alt="Lead Instructor"
-                                 >
-                        </div>
-                        <div class="card-body"><p class="card-text">Kingdom power part 2. Discover the extra-ordinary
-                            power of the kingdom of God.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
-                                </div>
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Address
+                            </h3>
+                            <div class="info-content">
+                                P.O BOX 12345<br>
+                                Eldoret, Uasin Gishu County<br>
+                                Kenya
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="video-container">
-                            <img src="{{url_for('static', filename= 'images/bulls_hero.jpg')}}"
-                                 class="img-fluid rounded-3 mb-3"
-                                 alt="Lead Instructor"
-                                 >
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </h3>
+                            <div class="info-content">
+                                <a href="mailto:sayomilembo@gmail.com">sayomilembo@gmail.com</a>
+                            </div>
                         </div>
-                        <div class="card-body"><p class="card-text">Kingdom power part 3. Discover the extra-ordinary
-                            power of the kingdom of God.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary">Read more..</button>
-                                </div>
+
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-share-alt"></i>
+                                Connect With Us
+                            </h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link twitter" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link facebook" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link github" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link instagram" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -245,9 +180,8 @@
             </div>
         </div>
     </div>
+    </section>
 
-
-</section>
 <script>
     // Simple fade-in animation for elements when they come into view
     const observerOptions = {
