@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>||</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="timer-body">
+    <div class="timer-container">
+        <h1 class="event-title">Anointing Streams 2025</h1>
+        <p class="event-description">Join us for a session of fellowship with the holy spirit</p>
+
+        <div class="countdown-container" id="countdownContainer">
+            <div class="countdown" id="countdown">
+                <div class="time-unit">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+            <div class="server-time" id="serverTime">
+                Loading server time...
+            </div>
+        </div>
+
+        <div class="event-live" id="eventLive">
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                EVENT IS NOW LIVE!
+            </div>
+            <div class="event-content">
+                <h2>Welcome to Summer Tech Conference 2025!</h2>
+                <p>The event has officially started. Join the main session or explore our breakout rooms.</p>
+                <a href="#" class="cta-button">Join Main Session</a>
+                <a href="#" class="cta-button">View Schedule</a>
+                <a href="#" class="cta-button">Network Hub</a>
+            </div>
+        </div>
+
+        <div class="controls">
+            <p style="margin-bottom: 1rem; opacity: 0.8;">Demo Controls:</p>
+            <button class="demo-button" onclick="setDemoTime(10)">10 seconds left</button>
+            <button class="demo-button" onclick="setDemoTime(3600)">1 hour left</button>
+            <button class="demo-button" onclick="setDemoTime(86400)">1 day left</button>
+            <button class="demo-button" onclick="resetToOriginal()">Reset to original</button>
+        </div>
+    </div>
+
+    <script>
+        class CountdownTimer {
+            constructor(targetDate) {
+                this.originalTargetDate = targetDate;
+                this.targetDate = targetDate;
+                this.serverTimeOffset = 0;
+                this.interval = null;
+                this.isEventLive = false;
+
+                this.elements = {
+                    days: document.getElementById('days'),
+                    hours: document.getElementById('hours'),
+                    minutes: document.getElementById('minutes'),
+                    seconds: document.getElementById('seconds'),
+                    serverTime: document.getElementById('serverTime'),
+                    countdownContainer: document.getElementById('countdownContainer'),
+                    eventLive: document.getElementById('eventLive')
+                };
+
+                this.init();
+            }
+
+            async init() {
+                await this.syncServerTime();
+                this.startCountdown();
+            }
+
+            // Simulate server time sync (in real implementation, this would be an API call)
+            async syncServerTime() {
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                // In a real implementation, you'd fetch this from your server:
+                // const response = await fetch('/api/server-time');
+                // const data = await response.json();
+                // this.serverTimeOffset = data.serverTime - Date.now();
+
+                // For demo purposes, we'll assume server time matches local time
+                this.serverTimeOffset = 0;
+
+                const now = this.getServerTime();
+                this.elements.serverTime.textContent = `Synced with server time: ${now.toLocaleString()}`;
+            }
+
+            getServerTime() {
+                return new Date(Date.now() + this.serverTimeOffset);
+            }
+
+            startCountdown() {
+                this.updateDisplay();
+
+                this.interval = setInterval(() => {
+                    this.updateDisplay();
+                }, 1000);
+            }
+
+            updateDisplay() {
+                const now = this.getServerTime();
+                const timeDiff = this.targetDate - now;
+
+                if (timeDiff <= 0) {
+                    this.handleEventStart();
+                    return;
+                }
+
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                this.elements.days.textContent = days.toString().padStart(2, '0');
+                this.elements.hours.textContent = hours.toString().padStart(2, '0');
+                this.elements.minutes.textContent = minutes.toString().padStart(2, '0');
+                this.elements.seconds.textContent = seconds.toString().padStart(2, '0');
+
+                // Update server time display
+                this.elements.serverTime.textContent = `Server time: ${now.toLocaleString()}`;
+            }
+
+            handleEventStart() {
+                if (this.isEventLive) return;
+
+                this.isEventLive = true;
+                clearInterval(this.interval);
+
+                // Smooth transition from countdown to event content
+                this.elements.countdownContainer.classList.add('hidden');
+
+                setTimeout(() => {
+                    this.elements.eventLive.classList.add('show');
+                }, 500);
+
+                // Optional: You could also redirect to a different page
+                // window.location.href = '/event-live';
+
+                // Optional: Send analytics event
+                // gtag('event', 'event_started', { event_category: 'countdown' });
+            }
+
+            // Demo methods for testing different scenarios
+            setTargetDate(date) {
+                this.targetDate = date;
+                if (!this.isEventLive) {
+                    this.updateDisplay();
+                }
+            }
+
+            reset() {
+                this.isEventLive = false;
+                this.targetDate = this.originalTargetDate;
+                this.elements.countdownContainer.classList.remove('hidden');
+                this.elements.eventLive.classList.remove('show');
+
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
+                this.startCountdown();
+            }
+        }
+
+        // Initialize the countdown
+        // Set target date to 2 minutes from now for testing transition
+        const targetDate = new Date(Date.now() + (2 * 60 * 1000));
+        const countdown = new CountdownTimer(targetDate);
+
+        // Demo functions for testing
+        function setDemoTime(secondsLeft) {
+            const newTarget = new Date(Date.now() + (secondsLeft * 1000));
+            countdown.setTargetDate(newTarget);
+        }
+
+        function resetToOriginal() {
+            countdown.reset();
+        }
+
+        // Handle page visibility changes to prevent issues when tab is inactive
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                // Refresh countdown when user returns to tab
+                countdown.updateDisplay();
+            }
+        });
+
+        // Clean up interval when page unloads
+        window.addEventListener('beforeunload', () => {
+            if (countdown.interval) {
+                clearInterval(countdown.interval);
+            }
+        });
+    </script>
+</body>
+</html>
